@@ -8,10 +8,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("~~~Enter a book name you are looking for ~~~");
         String bookName = scanner.nextLine();
         Optional<String> optAuthor = Book.getAuthor(bookName);
 
-        // write your code here
+        optAuthor.ifPresentOrElse(
+                (author) -> System.out.println(bookName + " written by " + author),
+                () -> System.out.println("Unknown"));
     }
 }
 
